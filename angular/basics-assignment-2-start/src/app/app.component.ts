@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { log } from 'util';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  userName = 'Write User Name';
+  buttonDisabled = false;
+
+  constructor(){
+
+  }
+
+  reset(){
+    this.userName = '';
+  }
 }
