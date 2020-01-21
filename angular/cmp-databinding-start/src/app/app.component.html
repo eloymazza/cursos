@@ -1,7 +1,17 @@
 <div class="container">
-  <app-cockpit></app-cockpit>
+  <app-cockpit 
+  (srvCreated)="onServerAdded($event)"
+  (bpCreated)="onBluePrintAdded($event)"></app-cockpit>
   <hr>
+  <button class="btn btn-primary" (click)="onChangeFirst()">Change First Element</button>
+  <button class="btn btn-danger" (click)="  ">Destroy</button>
   <app-server-element 
-  *ngFor="let serverElement of serverElements"
-  [element]="serverElement"></app-server-element>
+    *ngFor="let serverElement of serverElements" 
+    [srvElement]="serverElement"
+    [name]="serverElement.name">
+    <p class="card-text">
+      <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+      <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+    </p>
+  </app-server-element>
 </div>
